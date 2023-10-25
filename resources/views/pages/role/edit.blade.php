@@ -78,7 +78,7 @@
                                                                 id="permission-{{ $permission->id }}"
                                                                 @if (isset($role))
                                                                     @foreach ($role->permissions as $rPermission)
-                                                                        {{ $rPermission->id==$permissions->id? 'checked' : '' }}
+                                                                        {{ $rPermission->id==$permission->id? 'checked' : '' }}
                                                                     @endforeach
                                                                 @endif
                                                                 >
