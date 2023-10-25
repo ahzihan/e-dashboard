@@ -14,7 +14,7 @@ class PermissionController extends Controller
 
     public function index()
     {
-        $permissions=Permission::with(['module:id,module_name'])->select(['id','module_id','permission_name','permission_slug','updated_at'])->get();
+        $permissions=Permission::with(['module:id,module_name'])->select(['id','module_id','permission_name','permission_slug','updated_at'])->latest()->get();
 
         return view('pages.permission.index',compact('permissions'));
     }

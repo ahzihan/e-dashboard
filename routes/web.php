@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\ModuleController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::get('/', [DashboardController::class, 'Dashboard']);
 
 Route::resource('module', ModuleController::class);
 Route::resource('permission', PermissionController::class);
+Route::resource('role', RoleController::class);
