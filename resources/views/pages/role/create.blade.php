@@ -41,13 +41,51 @@
                                 <label class="col-span-3 ti-form-label">Role Note</label>
                                 <div class="col-span-9">
                                     <textarea class="ti-form-input @error('role_note') is-invalid
-                                    @enderror" name="role_note" id="role_note" cols="30" rows="7" placeholder="Role Note..">{{ old('role_name') }}</textarea>
+                                    @enderror" name="role_note" id="role_note" cols="30" rows="5" placeholder="Role Note..">{{ old('role_name') }}</textarea>
 
                                     @error('role_note')
                                         <span class="text-red-600 invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 xl:col-span-4">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h5 class="box-title">Manage Permission for Role</h5>
+                                    </div>
+
+                                    <div class="row mt-4 ml-5">
+                                        <input type="checkbox" class="ti-form-checkbox mt-0.5" id="select-all">
+                                        <label for="select-all" class="text-sm text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Select All</label>
+                                    </div>
+
+                                    <div class="box-body">
+                                        <div class="space-y-2">
+                                            @foreach ($modules->chunk(4) as $key => $chunks)
+                                                <div class="flex gap-x-8">
+
+                                                    @foreach ($chunks as $module)
+                                                        <div class="col">
+                                                            <h5 class="my-2 box-title">Module: {{ $module->module_name }}</h5>
+
+                                                            @foreach ($module->permissions as $permission)
+                                                            <div class="flex mb-3">
+                                                                <input type="checkbox" class="ti-form-checkbox mt-0.5" value="{{ $permission->id }}" name="permissions[]"
+                                                                id="permission-{{ $permission->id }}">
+                                                                <label for="permission-{{ $permission->id }}" class="text-sm text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">{{ $permission->permission_name }}</label>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endforeach
+
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -68,3 +106,19 @@
 @section('footer')
     @include('components.Footer')
 @endsection
+
+@push('scripts')
+<script>
+    $("#select-all").click(function(event){
+        if(this.checked){
+            $(':checkbox').each(function(){
+                this.checked=true;
+            })
+        }else{
+            $(':checkbox').each(function(){
+                this.checked=false;
+            })
+        }
+    })
+</script>
+@endpush
