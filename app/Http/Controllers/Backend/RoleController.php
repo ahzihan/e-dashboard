@@ -76,9 +76,14 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         $role = Role::find($id);
-        $role->delete();
 
-        Toastr::success('Role Deleted Successfully!');
-        return redirect()->route('role.index');
+        if($role->is_deletable){
+            $role->delete();
+            Toastr::success('Role Deleted Successfully!');
+            return redirect()->route('role.index');
+        }else{
+            Toastr::error("This role cann't be deletable!");
+            return redirect()->route('role.index');
+        }
     }
 }
