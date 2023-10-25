@@ -45,8 +45,8 @@
                                             <th scope="col" class="text-justify">SL</th>
                                             <th scope="col" class="text-justify">Last Update</th>
                                             <th scope="col" class="text-justify">Role Name</th>
+                                            <th scope="col" class="text-justify">Permission</th>
                                             <th scope="col" class="text-justify">Slug</th>
-                                            <th scope="col" class="text-justify">Note</th>
                                             <th scope="col" class="text-justify">Action</th>
                                         </tr>
                                     </thead>
@@ -56,8 +56,17 @@
                                                 <td class="font-medium">{{ $loop->index+1 }}</td>
                                                 <td class="font-medium">{{ $role->updated_at->format('d-M-Y') }}</td>
                                                 <td class="font-medium">{{ $role->role_name }}</td>
+
+                                                <td class="font-medium">
+                                                @foreach ($role->permissions->chunk(4) as $key => $chunks)
+                                                    <div class="row">
+                                                        @foreach ($chunks as $permission)
+                                                        <span class="ti-btn text-xs ti-btn-outline ti-btn-outline-success py-3.5 rounded-full">{{ $permission->permission_slug }}</span>
+                                                        @endforeach
+                                                    </div>
+                                                @endforeach
+                                                </td>
                                                 <td class="font-medium">{{ $role->role_slug }}</td>
-                                                <td class="font-medium">{{ $role->role_note }}</td>
                                                 <td class="font-medium">
                                                     <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-info" href="">View</a>
                                                     <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-success" href="{{ route('role.edit', $role->id ) }}">Edit</a>
