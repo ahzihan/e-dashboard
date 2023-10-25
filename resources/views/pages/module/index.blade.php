@@ -55,7 +55,7 @@
                                                 <td class="font-medium">{{ $loop->index+1 }}</td>
                                                 <td>{{ $module->updated_at->format('d-M-Y') }}</td>
                                                 <td class="font-medium">{{ $module->module_name }}</td>
-                                                <td>{{ $module->module_slag }}</td>
+                                                <td>{{ $module->module_slug }}</td>
                                                 <td class="font-medium">
                                                     <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-info" href="">View</a>
                                                     <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-success" href="{{ route('module.edit', $module->id ) }}">Edit</a>

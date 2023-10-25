@@ -26,18 +26,36 @@
 
                             <div class="sm:grid grid-cols-12 gap-x-6">
                                 <label class="col-span-3 ti-form-label">Module Name</label>
-                                <select class="col-span-9 ti-form-select" data-trigger="" name="module_id" id="module_id" tabindex="-1" data-choice="active">
+                                <div class="col-span-9">
+                                    <select class="ti-form-select @error('module_id') is-invalid
+                                    @enderror" data-trigger="" name="module_id" id="module_id" tabindex="-1" data-choice="active">
 
-                                    @foreach ($modules as $module)
-                                        <option class="py-2" value="{{ $module->id }}" {{ ($permission->module_id == $module->id) ? 'selected' : '' }} >{{ $module->module_name }}</option>
-                                    @endforeach
+                                        @foreach ($modules as $module)
+                                            <option class="py-2" value="{{ $module->id }}" {{ ($permission->module_id == $module->id) ? 'selected' : '' }} >{{ $module->module_name }}</option>
+                                        @endforeach
 
-                                </select>
+                                    </select>
+
+                                    @error('module_id')
+                                        <span class="text-red-600 invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="sm:grid grid-cols-12 gap-x-6">
                                 <label class="col-span-3 ti-form-label">Permission Name</label>
-                                <input type="text" name="permission_name" class="col-span-9 ti-form-input" value="{{ $permission->permission_name }}">
+                                <div class="col-span-9">
+                                    <input type="text" name="permission_name" class="ti-form-input @error('permission_name') is-invalid
+                                    @enderror" value="{{ $permission->permission_name }}">
+
+                                    @error('permission_name')
+                                        <span class="text-red-600 invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-x-6">

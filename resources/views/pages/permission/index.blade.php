@@ -44,6 +44,7 @@
                                         <tr>
                                             <th scope="col" class="text-justify">SL</th>
                                             <th scope="col" class="text-justify">Last Update</th>
+                                            <th scope="col" class="text-justify">Module Name</th>
                                             <th scope="col" class="text-justify">Permission Name</th>
                                             <th scope="col" class="text-justify">Slug</th>
                                             <th scope="col" class="text-justify">Action</th>
@@ -54,6 +55,7 @@
                                             <tr>
                                                 <td class="font-medium">{{ $loop->index+1 }}</td>
                                                 <td>{{ $permission->updated_at->format('d-M-Y') }}</td>
+                                                <td class="font-medium">{{ $permission->module['module_name'] }}</td>
                                                 <td class="font-medium">{{ $permission->permission_name }}</td>
                                                 <td>{{ $permission->permission_slug }}</td>
                                                 <td class="font-medium">

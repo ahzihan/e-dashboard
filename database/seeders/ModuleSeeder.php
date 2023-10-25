@@ -23,7 +23,7 @@ class ModuleSeeder extends Seeder
         foreach ($moduleArray as $module) {
             Module::updateOrCreate([
                 'module_name' => $module,
-                'module_slag' => Str::slug($module),
+                'module_slug' => Str::slug($module),
             ]);
         }
     }

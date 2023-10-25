@@ -13,7 +13,7 @@ class ModuleController extends Controller
 
     public function index()
     {
-        $modules=Module::select(['id','module_name','module_slag','updated_at'])->latest()->get();
+        $modules=Module::select(['id','module_name','module_slug','updated_at'])->latest()->get();
         return view('pages.module.index',compact('modules'));
     }
 
@@ -28,7 +28,7 @@ class ModuleController extends Controller
     {
         Module::updateOrCreate([
             'module_name' => $request->module_name,
-            'module_slag' => Str::slug($request->module_name),
+            'module_slug' => Str::slug($request->module_name),
         ]);
 
         Toastr::success('Module Created Successfully!');
@@ -54,7 +54,7 @@ class ModuleController extends Controller
         $module = Module::find($id);
         $module->update([
             'module_name' => $request->module_name,
-            'module_slag' => Str::slug($request->module_name),
+            'module_slug' => Str::slug($request->module_name),
         ]);
 
         Toastr::success('Module Updated Successfully!');

@@ -24,7 +24,16 @@
                             @csrf
                             <div class="sm:grid grid-cols-12 gap-x-6">
                                 <label class="col-span-3 ti-form-label">Module Name</label>
-                                <input type="text" name="module_name" class="col-span-9 ti-form-input" placeholder="Module Name">
+                                <div class="col-span-9">
+                                    <input type="text" name="module_name" class="ti-form-input @error('module_name') is-invalid
+                                    @enderror" value="{{ old('module_name') }}" placeholder="Module Name">
+
+                                    @error('module_name')
+                                        <span class="text-red-600 invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="grid grid-cols-12 gap-x-6">
