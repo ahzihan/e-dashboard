@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Module List')
+@section('page-title', 'Permission List')
 
 @section('side-bar')
     @include('components.Sidebar')
@@ -16,8 +16,8 @@
             <div class="col-span-12">
                 <div class="box">
                     <div class="box-header flex content-center items-center">
-                        <h5 class="box-title">Module List</h5>
-                        <a class="ti-btn ti-btn-primary" href="{{ route('module.create') }}">Add New</a>
+                        <h5 class="box-title">Permission List</h5>
+                        <a class="ti-btn ti-btn-primary" href="{{ route('permission.create') }}">Add New</a>
                     </div>
                     <div class="box-body">
                         <div class="table-bordered rounded-sm ti-custom-table-head">
@@ -44,22 +44,22 @@
                                         <tr>
                                             <th scope="col" class="text-justify">SL</th>
                                             <th scope="col" class="text-justify">Last Update</th>
-                                            <th scope="col" class="text-justify">Module Name</th>
+                                            <th scope="col" class="text-justify">Permission Name</th>
                                             <th scope="col" class="text-justify">Slug</th>
                                             <th scope="col" class="text-justify">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="">
-                                        @forelse ($modules as $module)
+                                        @forelse ($permissions as $permission)
                                             <tr>
                                                 <td class="font-medium">{{ $loop->index+1 }}</td>
-                                                <td>{{ $module->updated_at->format('d-M-Y') }}</td>
-                                                <td class="font-medium">{{ $module->module_name }}</td>
-                                                <td>{{ $module->module_slag }}</td>
+                                                <td>{{ $permission->updated_at->format('d-M-Y') }}</td>
+                                                <td class="font-medium">{{ $permission->permission_name }}</td>
+                                                <td>{{ $permission->permission_slug }}</td>
                                                 <td class="font-medium">
                                                     <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-info" href="">View</a>
-                                                    <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-success" href="{{ route('module.edit', $module->id ) }}">Edit</a>
-                                                    <form class="inline" action="{{ route('module.destroy',$module->id ) }}" method="post">
+                                                    <a class="ti-btn text-xs ti-btn-outline ti-btn-outline-success" href="{{ route('permission.edit', $permission->id ) }}">Edit</a>
+                                                    <form class="inline" action="{{ route('permission.destroy',$permission->id ) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="ti-btn text-xs ti-btn-outline ti-btn-outline-danger show_confirm" type="submit">Delete</button>

@@ -4,33 +4,26 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Module;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\ModuleStoreRequest;
 
 class ModuleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $modules=Module::select(['id','module_name','module_slag','updated_at'])->latest()->get();
         return view('pages.module.index',compact('modules'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('pages.module.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(ModuleStoreRequest $request)
     {
         Module::updateOrCreate([
@@ -42,26 +35,20 @@ class ModuleController extends Controller
         return redirect()->route('module.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $module=Module::find($id);
         return view('pages.module.edit',compact('module'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(ModuleStoreRequest $request, string $id)
     {
         $module = Module::find($id);
@@ -74,9 +61,7 @@ class ModuleController extends Controller
         return redirect()->route('module.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $module = Module::find($id);
