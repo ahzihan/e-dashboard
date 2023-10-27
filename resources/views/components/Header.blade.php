@@ -35,16 +35,18 @@
                   <button id="dropdown-profile" type="button"
                     class="hs-dropdown-toggle ti-dropdown-toggle gap-2 p-0 flex-shrink-0 h-8 w-8 rounded-full shadow-none focus:ring-gray-400 text-xs dark:focus:ring-white/10">
                     <img class="inline-block rounded-full ring-2 ring-white dark:ring-white/10"
-                      src="../assets/img/users/1.jpg" alt="Image Description">
+                      src="{{asset('assets/img/users/akbar_hossain.jpg')}}" alt="Image">
                   </button>
 
                   <div class="hs-dropdown-menu ti-dropdown-menu border-0 w-[20rem]" aria-labelledby="dropdown-profile">
                     <div class="ti-dropdown-header !bg-primary flex">
                       <div class="ltr:mr-3 rtl:ml-3">
                         <img class="avatar shadow-none rounded-full !ring-transparent"
-                          src="../assets/img/users/1.jpg" alt="profile-img">
+                          src="{{asset('assets/img/users/akbar_hossain.jpg')}}" alt="profile-img">
                       </div>
                       <div>
+                        {{-- {{ Auth::user()->name }}
+                        {{ Auth::user()->role->role_name }} --}}
                         <p class="ti-dropdown-header-title !text-white">Md Akbar Hossain</p>
                         <p class="ti-dropdown-header-content !text-white/50">Web Developer</p>
                       </div>

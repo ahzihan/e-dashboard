@@ -15,3 +15,7 @@
 @section('footer')
     @include('components.Footer')
 @endsection
+
+@push('scripts')
+
+@endpush
